@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-handwritten: var(--font-caveat), cursive;
+
+  --color-cream: #FAF6F0;
+  --color-warm-white: #F5EDE4;
+  --color-beige: #E8DDD0;
+  --color-terracotta: #C47A5A;
+  --color-deep-brown: #5C3D2E;
+  --color-jaggery: #8B5E3C;
+  --color-muted-gold: #C4A265;
+  --color-warm-earth: #A67B5B;
+  --color-madhubani-red: #B85042;
+  --color-text-primary: #3D2B1F;
+  --color-text-secondary: #7A6555;
+}
+
+:root {
+  --background: #FAF6F0;
+  --foreground: #3D2B1F;
+}
+
+/* Base Styles */
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Lenis Smooth Scroll Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
