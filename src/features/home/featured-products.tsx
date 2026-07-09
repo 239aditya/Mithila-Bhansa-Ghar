@@ -10,8 +10,51 @@ export async function FeaturedProducts() {
   // or layout products in a staggered, curated offset grid.
   // Since we currently have 1 product in mock, we'll display two cards to demonstrate
   // the layout (e.g. the standard product and a mock variant box).
-  const primaryProduct = products[0];
-  const secondaryProduct = products[1] || primaryProduct;
+  const jaggeryProduct = products[0];
+  
+  if (!jaggeryProduct) return null;
+
+  const smallPacketProduct = {
+    ...jaggeryProduct,
+    id: "gid://shopify/Product/1-small",
+    title: "Traditional Jaggery & Ghee Thekua (Small Packet - 400g)",
+    descriptionHtml: "<p>A single 400g pouch of our signature hand-pressed Thekua. Made with unrefined organic jaggery, pure cow ghee, and stone-ground wheat.</p>",
+    priceRange: {
+      minVariantPrice: { amount: "399.00", currencyCode: "INR" },
+      maxVariantPrice: { amount: "399.00", currencyCode: "INR" }
+    },
+    variants: {
+      edges: [
+        jaggeryProduct.variants.edges[0]
+      ]
+    },
+    images: {
+      edges: [
+        jaggeryProduct.images.edges[2] || jaggeryProduct.images.edges[0]
+      ]
+    }
+  };
+
+  const bigPacketProduct = {
+    ...jaggeryProduct,
+    id: "gid://shopify/Product/1-big",
+    title: "Traditional Jaggery & Ghee Thekua (Big Packet - 800g)",
+    descriptionHtml: "<p>A premium Festive Gift Box containing 2x 400g pouches (800g total). Ideal for sharing the warmth of Mithila heritage with family.</p>",
+    priceRange: {
+      minVariantPrice: { amount: "749.00", currencyCode: "INR" },
+      maxVariantPrice: { amount: "749.00", currencyCode: "INR" }
+    },
+    variants: {
+      edges: [
+        jaggeryProduct.variants.edges[1] || jaggeryProduct.variants.edges[0]
+      ]
+    },
+    images: {
+      edges: [
+        jaggeryProduct.images.edges[1] || jaggeryProduct.images.edges[0]
+      ]
+    }
+  };
 
   return (
     <section className="py-20 md:py-28 bg-[var(--color-cream)]">
@@ -42,20 +85,11 @@ export async function FeaturedProducts() {
           </FadeIn>
         </div>
 
-        {/* Asymmetrical Staggered Spreads */}
-        {primaryProduct && secondaryProduct && (
-          <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start">
-            {/* Primary Product: Large, Dominant Card */}
-            <div className="w-full md:w-[58%]">
-              <ProductCard product={primaryProduct} delay={0.1} />
-            </div>
-            
-            {/* Secondary Product: Staggered, Offset Card */}
-            <div className="w-full md:w-[42%] md:pt-32 lg:pt-48">
-              <ProductCard product={secondaryProduct} delay={0.4} />
-            </div>
-          </div>
-        )}
+        {/* Symmetric Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <ProductCard product={smallPacketProduct} delay={0.1} />
+          <ProductCard product={bigPacketProduct} delay={0.3} />
+        </div>
       </div>
     </section>
   );

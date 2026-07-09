@@ -69,7 +69,9 @@ export function ProductCard({ product, delay = 0 }: ProductCardProps) {
           
           <div className="flex justify-between items-center mt-auto pt-4 border-t border-[var(--color-terracotta)]/10">
             <span className="font-sans text-lg text-[var(--color-text-primary)] font-medium">
-              From ₹{minPrice.amount}
+              {product.priceRange.minVariantPrice.amount === product.priceRange.maxVariantPrice.amount
+                ? `₹${parseFloat(product.priceRange.minVariantPrice.amount).toFixed(0)}`
+                : `From ₹${parseFloat(product.priceRange.minVariantPrice.amount).toFixed(0)}`}
             </span>
           </div>
         </div>
