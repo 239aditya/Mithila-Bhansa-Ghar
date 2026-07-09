@@ -53,6 +53,7 @@ export type Product = {
   preparation?: Metafield;
   storage?: Metafield;
   shelfLife?: Metafield;
+  tags?: string[];
 };
 
 export type Collection = {

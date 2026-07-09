@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getAllProducts } from "@/lib/shopify/client";
-import { ProductCard } from "@/features/shop/components/product-card";
+import { ShopContainer } from "@/features/shop/components/shop-container";
 import { FadeIn } from "@/components/motion/fade-in";
 import { SectionDivider } from "@/components/cultural/section-divider";
 
@@ -28,17 +28,7 @@ export default async function ShopPage() {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-          {products.map((product, index) => (
-            <ProductCard key={product.id} product={product} delay={index * 0.1} />
-          ))}
-        </div>
-
-        {products.length === 0 && (
-          <div className="text-center py-20 text-[var(--color-text-secondary)]">
-            Our kitchen is currently preparing the next batch. Check back soon.
-          </div>
-        )}
+        <ShopContainer products={products} />
 
       </div>
       

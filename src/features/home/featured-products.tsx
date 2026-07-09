@@ -11,24 +11,7 @@ export async function FeaturedProducts() {
   // Since we currently have 1 product in mock, we'll display two cards to demonstrate
   // the layout (e.g. the standard product and a mock variant box).
   const primaryProduct = products[0];
-  
-  // We construct a mock secondary product for the visual spread
-  const secondaryProduct = primaryProduct ? {
-    ...primaryProduct,
-    id: "gid://shopify/Product/2",
-    handle: "traditional-khasta-thekua", // links to same PDP for demo
-    title: "Festive Gift Box (2x 400g)",
-    descriptionHtml: "<p>A pair of our signature hand-pressed pouches, presented in a handcrafted screen-printed card box. An elegant gift of remembrance.</p>",
-    priceRange: {
-      minVariantPrice: { amount: "749.00", currencyCode: "INR" },
-      maxVariantPrice: { amount: "749.00", currencyCode: "INR" }
-    },
-    images: {
-      edges: [
-        { node: { url: "/images/packaging/kraft-pouches-back.jpg", altText: "Festive Gift Box", width: 1200, height: 1500 } }
-      ]
-    }
-  } : null;
+  const secondaryProduct = products[1] || primaryProduct;
 
   return (
     <section className="py-20 md:py-28 bg-[var(--color-cream)]">
@@ -41,8 +24,8 @@ export async function FeaturedProducts() {
               The Offerings
             </span>
             <h2 className="font-serif text-[40px] md:text-[56px] text-[var(--color-text-primary)] leading-[1.0] tracking-tight">
-              Curated from our <br />
-              <span className="italic font-light text-[var(--color-terracotta)]">hearth to yours.</span>
+              Curated from our <span className="italic font-light text-[var(--color-terracotta)]">hearts</span> to yours, <br />
+              every bite brings you <span className="italic font-light text-[var(--color-terracotta)]">home.</span>
             </h2>
           </FadeIn>
           
