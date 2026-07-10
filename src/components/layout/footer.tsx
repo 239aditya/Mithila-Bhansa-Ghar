@@ -28,7 +28,7 @@ export function Footer() {
 
             <div className="flex items-center gap-3">
               <a 
-                href="https://www.instagram.com/p/DQ_AhAQEs1h/?igsh=MW9sdGQ3NTAwN2ludg=="
+                href="https://www.instagram.com/bhansaghar_mithila?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[var(--color-terracotta)] transition-colors flex items-center gap-2 text-xs"
