@@ -3,7 +3,7 @@ import { MadhubaniBorder } from "@/components/cultural/madhubani-border";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-warm-white)] pt-16 pb-8 text-[var(--color-text-secondary)] mt-auto relative overflow-hidden">
+    <footer className="bg-[var(--color-cream)] pt-16 pb-8 text-[var(--color-text-secondary)] mt-auto relative overflow-hidden">
       <MadhubaniBorder className="absolute top-0 left-0" />
       
       <div className="container mx-auto px-4 md:px-8 pt-8">

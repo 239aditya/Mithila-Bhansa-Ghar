@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cormorant, outfit, caveat } from "./fonts";
+import { cormorant, outfit } from "./fonts";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${outfit.variable} ${caveat.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[var(--color-cream)] text-[var(--color-text-primary)]">
         <LenisProvider>

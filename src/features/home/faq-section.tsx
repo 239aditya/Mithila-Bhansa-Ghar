@@ -28,11 +28,11 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-16 md:py-24 bg-[var(--color-warm-white)]">
+    <section className="py-28 md:py-40 bg-[var(--color-cream)]">
       <div className="container mx-auto px-4 md:px-8 max-w-4xl">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <FadeIn>
-            <h2 className="font-sans text-sm tracking-[0.2em] uppercase text-[var(--color-terracotta)] mb-4">Questions</h2>
+            <h2 className="font-sans text-xs tracking-[0.2em] uppercase text-[var(--color-terracotta)] mb-4">Questions</h2>
             <h3 className="font-serif text-3xl md:text-5xl text-[var(--color-text-primary)]">
               Before you <span className="italic">order</span>
             </h3>

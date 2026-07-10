@@ -1,8 +1,8 @@
-import { Cormorant_Garamond, Outfit, Caveat } from 'next/font/google';
+import { Cormorant_Garamond, Outfit } from 'next/font/google';
 
 export const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '600'],
   display: 'swap',
   variable: '--font-cormorant',
 });
@@ -13,8 +13,3 @@ export const outfit = Outfit({
   variable: '--font-outfit',
 });
 
-export const caveat = Caveat({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-caveat',
-});
