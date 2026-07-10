@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MadhubaniBorder } from "@/components/cultural/madhubani-border";
 
 export function Footer() {
@@ -8,11 +9,53 @@ export function Footer() {
       
       <div className="container mx-auto px-4 md:px-8 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <h2 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4">Bhansa Ghar</h2>
-            <p className="max-w-md italic mb-6">
-              "Some recipes deserve to stay exactly as they were. We preserve memories, traditions, and the taste of home."
-            </p>
+          <div className="col-span-1 md:col-span-2 space-y-6">
+            <div>
+              <h2 className="font-serif text-3xl text-[var(--color-text-primary)] mb-4">Bhansa Ghar</h2>
+              <p className="max-w-md italic">
+                "Some recipes deserve to stay exactly as they were. We preserve memories, traditions, and the taste of home."
+              </p>
+            </div>
+            
+            <div className="text-xs space-y-1">
+              <p className="font-medium text-[var(--color-text-primary)]">Mithila Bhansa Ghar (by Priyanka Jha)</p>
+              <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                M73, Diamond District, Old Airport Road,<br />
+                Bangalore East, Bangalore Urban, Karnataka - 560008
+              </p>
+              <p className="text-[var(--color-text-secondary)]">WhatsApp: +91 95386 60957</p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://www.instagram.com/p/DQ_AhAQEs1h/?igsh=MW9sdGQ3NTAwN2ludg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--color-terracotta)] transition-colors flex items-center gap-2 text-xs"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="stroke-current">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Follow us on Instagram</span>
+              </a>
+            </div>
+
+            <div className="flex items-center gap-4 pt-2">
+              <div className="relative w-16 h-12 flex-shrink-0 bg-white p-0.5 rounded-sm border border-[var(--color-terracotta)]/15">
+                <Image 
+                  src="/images/brand/fssai-logo.png"
+                  alt="FSSAI Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-[10px] leading-snug">
+                <p className="font-semibold text-[var(--color-text-primary)]">FSSAI Approved Operator</p>
+                <p className="text-[var(--color-text-secondary)]">Registration No. 21226009002763</p>
+              </div>
+            </div>
           </div>
           
           <div>

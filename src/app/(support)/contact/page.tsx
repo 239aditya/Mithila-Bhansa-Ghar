@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { FadeIn } from "@/components/motion/fade-in";
 import { MadhubaniBorder } from "@/components/cultural/madhubani-border";
 
@@ -32,9 +33,9 @@ export default function ContactPage() {
             <div>
               <h3 className="font-serif text-2xl text-[var(--color-text-primary)] mb-4">Our Kitchen</h3>
               <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                Mithila Bhansa Ghar<br />
-                [Address Line 1]<br />
-                [Address Line 2]<br />
+                Mithila Bhansa Ghar (by Priyanka Jha)<br />
+                M73, Diamond District, Old Airport Road,<br />
+                Bangalore East, Bangalore Urban, Karnataka - 560008<br />
                 India
               </p>
             </div>
@@ -45,14 +46,34 @@ export default function ContactPage() {
                 <span className="font-medium text-[var(--color-text-primary)]">Email:</span> hello@mithilabhansaghar.com
               </p>
               <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
-                <span className="font-medium text-[var(--color-text-primary)]">WhatsApp:</span> +91 XXXXX XXXXX
+                <span className="font-medium text-[var(--color-text-primary)]">WhatsApp:</span> +91 95386 60957
               </p>
               <a 
-                href="#" 
+                href="https://wa.me/919538660957"
+                target="_blank"
+                rel="noopener noreferrer" 
                 className="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-terracotta)] text-[var(--color-terracotta)] hover:bg-[var(--color-terracotta)] hover:text-white transition-colors text-sm tracking-widest uppercase rounded-sm"
               >
                 Message on WhatsApp
               </a>
+            </div>
+
+            <div>
+              <h3 className="font-serif text-2xl text-[var(--color-text-primary)] mb-4">FSSAI Registration</h3>
+              <div className="flex items-center gap-4">
+                <div className="relative w-16 h-12 flex-shrink-0 bg-white p-0.5 rounded-sm border border-[var(--color-terracotta)]/15">
+                  <Image 
+                    src="/images/brand/fssai-logo.png"
+                    alt="FSSAI Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-sm">
+                  <p className="font-medium text-[var(--color-text-primary)]">FSSAI Approved Operator</p>
+                  <p className="text-[var(--color-text-secondary)]">Registration No. 21226009002763</p>
+                </div>
+              </div>
             </div>
           </FadeIn>
 
