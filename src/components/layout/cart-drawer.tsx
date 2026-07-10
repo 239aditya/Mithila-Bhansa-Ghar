@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 export function CartDrawer() {
   const { isOpen, closeCart, items, removeItem, updateQuantity, totalPrice } = useCartStore();
   const [mounted, setMounted] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   // Prevent hydration errors
   useEffect(() => {
@@ -26,6 +27,28 @@ export function CartDrawer() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  const handleCheckout = () => {
+    setIsRedirecting(true);
+    
+    // Construct Shopify cart permalink
+    // Standard format: https://{shop}.myshopify.com/cart/{variant_id}:{quantity},{variant_id}:{quantity}
+    // We parse the variant ID from the GID (e.g. gid://shopify/ProductVariant/1 -> 1)
+    const cartParams = items
+      .map((item) => {
+        const variantId = item.variant.id.split("/").pop();
+        return `${variantId}:${item.quantity}`;
+      })
+      .join(",");
+    
+    const shopDomain = "mithila-bhansa-ghar.myshopify.com"; 
+    const checkoutUrl = `https://${shopDomain}/cart/${cartParams}`;
+    
+    // Add a short delay to display the redirection status
+    setTimeout(() => {
+      window.location.href = checkoutUrl;
+    }, 850);
+  };
 
   if (!mounted) return null;
 
@@ -48,7 +71,7 @@ export function CartDrawer() {
         )}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-6 border-b border-[var(--color-terracotta)]/20">
+        <div className="flex items-center justify-between px-6 py-6 border-b border-[var(--color-terracotta)]/25">
           <h2 className="font-serif text-2xl text-[var(--color-text-primary)]">Your Cart</h2>
           <button 
             onClick={closeCart}
@@ -77,7 +100,7 @@ export function CartDrawer() {
               <div key={item.id} className="flex gap-4">
                 <div className="relative w-20 h-24 rounded-sm overflow-hidden bg-[var(--color-warm-white)] flex-shrink-0">
                   <Image 
-                    src="/images/product/thekua-closeup.jpg" // Fallback mock image since variant doesn't have image directly in our simple mock
+                    src="/images/product/thekua-closeup.jpg" 
                     alt={item.variant.title}
                     fill
                     className="object-cover"
@@ -128,15 +151,27 @@ export function CartDrawer() {
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="p-6 bg-[var(--color-warm-white)] border-t border-[var(--color-terracotta)]/20 space-y-4">
-            <div className="flex justify-between items-end mb-4">
+          <div className="p-6 bg-[var(--color-cream)] border-t border-[var(--color-terracotta)]/25 space-y-4">
+            <div className="flex justify-between items-end mb-2">
               <span className="font-sans text-sm tracking-widest uppercase text-[var(--color-text-secondary)]">Subtotal</span>
               <span className="font-serif text-2xl text-[var(--color-text-primary)]">₹{totalPrice().toFixed(2)}</span>
             </div>
-            <p className="text-xs text-[var(--color-text-secondary)] mb-4">Shipping & taxes calculated at checkout.</p>
             
-            <button className="w-full h-14 bg-[var(--color-terracotta)] text-white font-sans tracking-widest uppercase text-sm rounded-sm hover:bg-[var(--color-madhubani-red)] transition-colors">
-              Checkout
+            <div className="bg-[var(--color-cream)] p-3 border border-[var(--color-terracotta)]/15 rounded-sm text-center mb-2">
+              <p className="text-[10px] tracking-widest uppercase text-[var(--color-terracotta)] font-bold mb-1">
+                🔒 Secure Guest Checkout
+              </p>
+              <p className="text-[9px] text-[var(--color-text-secondary)] leading-relaxed">
+                Checkout directly on Shopify as a guest. No account or password creation required.
+              </p>
+            </div>
+
+            <button 
+              onClick={handleCheckout}
+              disabled={isRedirecting}
+              className="w-full h-14 bg-[var(--color-terracotta)] text-white font-sans tracking-widest uppercase text-sm rounded-sm hover:bg-[var(--color-madhubani-red)] transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+            >
+              {isRedirecting ? "Redirecting..." : "Checkout as Guest"}
             </button>
           </div>
         )}
